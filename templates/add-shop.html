@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Source Information</title>
+</head>
+<body>
+    <span>Adding information for {{product.name}}</span>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+      <form action="" method="POST" autocomplete="off">
+        <table>
+            <tr>
+                <td>
+                    <label for="name">Source</label>
+                </td>
+                <td>
+                    <input type="text" name="name" id="name" required placeholder="Enter source name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="type">Source Type</label>
+                </td>
+                <td>
+                   <select name="type" id="type" required>
+                      <option value="shop">Shop</option>
+                      <option value="web">Ecommerce Website</option>                   
+                   </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="price">Product Price ($)</label>
+                </td>
+                <td>
+                    <input type="text" name="price" id="price" placeholder="How much does it cost?">
+                </td>
+            </tr>
+              <tr>
+                <td>
+                    <label for="url">Product URL</label>
+                </td>
+                <td>
+                    <input type="text" name="url" id="url" placeholder="Product URL (optional)">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Save</button>
+                    <button type="reset">Reset</button>
+                    <a href="{{ url_for('index')}}">Home</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

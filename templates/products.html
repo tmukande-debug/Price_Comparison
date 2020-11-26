@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All products</title>
+</head>
+<body>
+    <a href="{{url_for('index')}}">Home</a>
+    <table border="1px solid black">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{product.id}}</td>
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.category}}</td>
+                    <td><a href="{{url_for('add_source_info', id=product.id)}}">Add Price Info</a> | <a href="{{url_for('get_product_info', id=product.id)}}">View</a></td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</body>
+</html>

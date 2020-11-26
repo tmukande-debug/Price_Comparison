@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a product</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="" method="POST" autocomplete="off">
+        <table>
+            <tr>
+                <td>
+                    <label for="name">Product Name</label>
+                </td>
+                <td>
+                    <input type="text" name="name" id="name" required placeholder="Enter product name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="category">Product Category</label>
+                </td>
+                <td>
+                   <select name="category" id="category" required>
+                      {% for category in categories %}
+                            <option value="{{category.id}}">{{ category.name }}</option>
+                      {% endfor %}
+                      
+                   </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="description">Product Description</label>
+                </td>
+                <td>
+                    <textarea name="description" required id="description" cols="20" rows="10" placeholder="Information about the product"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Save</button>
+                    <button type="reset">Reset</button>
+                    <a href="{{ url_for('index')}}">Home</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
